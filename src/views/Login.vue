@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img class="logo" src="../assets/img/logo_1.svg" alt="E-book Rent">
+    <Logo mode="vertical" />
 
     <div class="content">
       <div class="rent-info">
@@ -11,9 +11,8 @@
           <li>A maior biblioteca online!</li>
         </ul>
       </div>
-      <div class="login-area">
-        <h1>Acesso</h1>
-        <form class="form">
+      <Form label="Acesso">
+        <template v-slot:fields>
           <Input
             type="email"
             label="Email"
@@ -26,19 +25,18 @@
             placeholder="Insira a sua senha"
             v-model="user.password"
           />
-          <div class="actions">
-            <a class="link">Esqueceu a senha? Clique aqui!</a>
-            <Button title="Acessar" @click.prevent="loginWithEmail" />
-          </div>
-          <div class="divider">
-          </div>
+        </template>
+        <template v-slot:actions>
+          <a class="link">Esqueceu a senha? Clique aqui!</a>
+          <Button title="Acessar" @click.prevent="loginWithEmail" />
+        </template>
+        <template v-slot:extra>
           <GoogleBtn @click.prevent="loginWithGoogle" />
-
-          <div class="registry-link">
-            <a @click="redirectToRegistry" class="link">Não se cadastrou ainda? Cadastre-se aqui!</a>
-          </div>
-        </form>
-      </div>
+        </template>
+        <template v-slot:redirect>
+          <a @click="redirectToRegistry" class="link">Não se cadastrou ainda? Cadastre-se aqui!</a>
+        </template>
+      </Form>
     </div>
   </div>
 </template>
@@ -47,6 +45,8 @@
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import GoogleBtn from '@/components/GoogleBtn';
+import Logo from '@/components/Logo';
+import Form from '@/components/Form';
 
 export default {
   name: "Login",
@@ -54,6 +54,8 @@ export default {
     Input,
     GoogleBtn,
     Button,
+    Logo,
+    Form
   },
   data(){
     return {
@@ -141,31 +143,6 @@ export default {
   margin-top: -1.3rem;
 }
 
-.login-area {
-  width: 60%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.login-area h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-}
-
-.form {
-  width: 30rem;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .link {
   font-size: 0.8rem;
   color: #595959;
@@ -174,37 +151,6 @@ export default {
 
 .link:hover {
   text-decoration: underline;
-}
-
-.registry-link {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.divider {
-  margin: 30px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.divider::before {
-  content: 'ou';
-  position: absolute;
-  z-index: 10;
-  background: white;
-  padding: 0 10px;
-  color: #595959;
-  font-size: 0.7rem;
-}
-
-.divider::after {
-  content: '';
-  position: absolute;
-  height: 1px;
-  width: 30rem;
-  background: #d9d9d9;
-  z-index: 1;
 }
 
 @media screen and (max-width: 1200px){
