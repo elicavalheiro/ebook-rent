@@ -1,9 +1,21 @@
 <template>
   <button class="g-btn">
     <img src="../assets/img/google_icon.svg" alt="Google Icon">
-    Continue com <strong>Google</strong>
+    {{ btnText }} <strong>Google</strong>
   </button>
 </template>
+
+<script>
+export default {
+  name: 'GoogleBtn',
+  props: {
+    btnText: {
+      type: String,
+      default: 'Continue com'
+    }
+  }
+}
+</script>
 
 <style scoped>
 .g-btn {

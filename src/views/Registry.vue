@@ -12,8 +12,14 @@
         </ul>
       </div>
       <div class="login-area">
-        <h1>Acesso</h1>
+        <h1>Cadastro</h1>
         <form class="form">
+          <Input
+            type="text"
+            label="Nome"
+            placeholder="Insira o seu nome"
+            v-model="user.name"
+          />
           <Input
             type="email"
             label="Email"
@@ -27,15 +33,14 @@
             v-model="user.password"
           />
           <div class="actions">
-            <a class="link">Esqueceu a senha? Clique aqui!</a>
-            <Button title="Acessar" @click.prevent="loginWithEmail" />
+            <Button title="Cadastrar-se" @click.prevent="loginWithEmail" />
           </div>
           <div class="divider">
           </div>
-          <GoogleBtn @click.prevent="loginWithGoogle" />
+          <GoogleBtn btnText="Cadastre-se com" @click.prevent="loginWithGoogle" />
 
           <div class="registry-link">
-            <a @click="redirectToRegistry" class="link">Não se cadastrou ainda? Cadastre-se aqui!</a>
+            <a @click="redirectToLogin" class="link">Já possui cadastro? Acesse aqui!</a>
           </div>
         </form>
       </div>
@@ -58,18 +63,19 @@ export default {
   data(){
     return {
       user: {
+        name: '',
         email: '',
         password: '',
       }
     }
   },
   methods: {
-    redirectToRegistry(){
-      this.$router.push('/cadastro')
+    redirectToLogin(){
+      this.$router.push('/acesso');
     },
 
     loginWithEmail(){
-      this.$router.push('/');
+      this.$router.push('/')
     },
 
     loginWithGoogle(){
@@ -109,6 +115,7 @@ export default {
 
   border-radius: 3px;
   max-width: 20rem;
+  max-height: 25rem;
 }
 
 .rent-info h1 {
@@ -162,7 +169,7 @@ export default {
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -180,6 +187,7 @@ export default {
   text-align: center;
   margin-top: 30px;
 }
+
 
 .divider {
   margin: 30px 0;
