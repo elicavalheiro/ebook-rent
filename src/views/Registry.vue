@@ -16,19 +16,19 @@
           <Input
             type="text"
             label="Nome"
-            placeholder="Insira o seu nome"
+            placeholder="Leia Organa"
             v-model="user.name"
           />
           <Input
             type="email"
             label="Email"
-            placeholder="Insira o seu email"
+            placeholder="leia.organa@starwars.com"
             v-model="user.email"
           />
           <Input
             type="password"
             label="Senha"
-            placeholder="Insira a sua senha"
+            placeholder="no mínimo 8 caracteres"
             v-model="user.password"
           />
         </template>

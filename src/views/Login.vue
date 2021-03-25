@@ -16,13 +16,13 @@
           <Input
             type="email"
             label="Email"
-            placeholder="Insira o seu email"
+            placeholder="leia.organa@starwars.com"
             v-model="user.email"
           />
           <Input
             type="password"
             label="Senha"
-            placeholder="Insira a sua senha"
+            placeholder="********"
             v-model="user.password"
           />
         </template>
