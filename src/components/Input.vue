@@ -2,6 +2,7 @@
   <div class="input-container">
     <label class="label">{{ label }}</label>
     <input
+      :value="modelValue"
       v-bind="$attrs"
       class="input"
       :placeholder="placeholder"
