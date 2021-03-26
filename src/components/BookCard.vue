@@ -1,6 +1,6 @@
 <template>
   <div class="book-card">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/51p+5uCAG8L._SX258_BO1,204,203,200_.jpg" >
+    <img src="https://images-na.ssl-images-amazon.com/images/I/71lFUYuLmuL.jpg" >
     <div class="book-info">
       <h3 class="title">A revolução dos bichos</h3>
       <p class="author">George Orwell</p>
