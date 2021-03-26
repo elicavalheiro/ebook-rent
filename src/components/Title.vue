@@ -1,6 +1,9 @@
 <template>
   <div class="title-container">
-    <h1 :style="{ fontSize: size }">{{title}}</h1>
+    <div class="title">
+      <h1 :style="{ fontSize: size }">{{title}}</h1>
+      <slot name="extra"></slot>
+    </div>
     <div class="divider"></div>
   </div>
 </template>
@@ -28,6 +31,12 @@ export default {
   width: 100%;
 }
 
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 h1 {
   color: var(--black-color);
   margin: .5rem 0;
@@ -38,7 +47,7 @@ h1 {
   height: 1px;
   background: #6A66A3;
   opacity: 20%;
-
-  margin-bottom: 2rem;
+  
+  margin-bottom: 1rem;
 }
 </style>

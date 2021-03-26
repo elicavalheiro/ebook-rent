@@ -2,10 +2,33 @@
   <div class="filters-container">
     <h2>Filtros</h2>
     <div class="filter">
-      <Title title="Status" size=".8rem" />
-      <Checkbox label="Todos" v-model="statusFilter.all" />
-      <Checkbox label="Disponíveis" v-model="statusFilter.available" />
-      <Checkbox label="Indisponíveis" v-model="statusFilter.unavailable" />
+      <div class="filter-group">
+        <Title title="Status" size=".8rem" />
+        <Checkbox label="Todos" value="all" v-model="statusFilter" />
+        <Checkbox label="Disponíveis" value="available" v-model="statusFilter" />
+        <Checkbox label="Indisponíveis" value="unavailable" v-model="statusFilter" />
+      </div>
+      <div class="filter-group">
+        <Title title="Preço" size=".8rem">
+          <template v-slot:extra>
+            <a class="clear-button" @click="priceFilter = ''">Limpar</a>
+          </template>
+        </Title>
+        <Checkbox label="Até R$ 10" value="bellow_10" v-model="priceFilter" />
+        <Checkbox label="R$ 10 à R$ 30" value="between_10_30" v-model="priceFilter" />
+        <Checkbox label="R$ 30 à R$ 50" value="between_30_50" v-model="priceFilter" />
+      </div>
+      <div class="filter-group">
+        <Title title="Categoria" size=".8rem">
+          <template v-slot:extra>
+            <a class="clear-button" @click="categoryFilter = ''">Limpar</a>
+          </template>
+        </Title>
+        <Checkbox label="Romance" value="romance" v-model="categoryFilter" />
+        <Checkbox label="Internacionais" value="international" v-model="categoryFilter" />
+        <Checkbox label="Suspense" value="suspense" v-model="categoryFilter" />
+        <Checkbox label="Mistério" value="mistery" v-model="categoryFilter" />
+      </div>
     </div>
   </div>
 </template>
@@ -22,11 +45,9 @@ export default {
   },
   data(){
     return {
-      statusFilter: {
-        all: true,
-        available: false,
-        unavailable: false,
-      }
+      statusFilter: 'all',
+      priceFilter: '',
+      categoryFilter: ''
     }
   }
 }
@@ -35,6 +56,17 @@ export default {
 <style scoped>
 .filters-container {
   width: 15%;
+}
+
+.filter-group {
+  margin-bottom: 3rem;
+}
+
+.clear-button {
+  text-decoration: none;
+  font-size: .8rem;
+  color: #6A66A3;
+  cursor: pointer;
 }
 
 h2 {

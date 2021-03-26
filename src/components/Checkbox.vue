@@ -2,7 +2,11 @@
   <div class="checkbox-container">
     <label class="checkbox">
       {{ label }}
-      <input type="checkbox" :value="modelValue" @click="$emit('update:modelValue', !modelValue)" />
+      <input
+        type="checkbox"
+        :value="value"
+        :checked="value === modelValue"
+        @change="$emit('update:modelValue', $event.target.value)" />
       <span class="checkmark"></span>
     </label>
   </div>
@@ -17,10 +21,19 @@ export default {
       default: ''
     },
     modelValue: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: '',
+    },
+    value: {
+      type: String,
+      default: ''
     }
   },
+  methods: {
+    teste(event){
+      console.log(event.target.value)
+    }
+  }
 }
 </script>
 
