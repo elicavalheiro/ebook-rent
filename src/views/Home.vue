@@ -3,20 +3,20 @@
   <div class="content">
     <Filters />
     <div class="v-divider"></div>
-    <Title title="Todos os livros" />
+    <Books />
   </div>
 </template>
 
 <script>
 import PageHeader from '@/components/PageHeader'
-import Title from '@/components/Title'
+import Books from '@/components/Books'
 import Filters from '@/components/Filters'
 
 export default {
   name: 'Home',
   components: {
     PageHeader,
-    Title,
+    Books,
     Filters
   }
 }

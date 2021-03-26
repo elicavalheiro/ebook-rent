@@ -4,30 +4,30 @@
     <div class="filter">
       <div class="filter-group">
         <Title title="Status" size=".8rem" />
-        <Checkbox label="Todos" value="all" v-model="statusFilter" />
-        <Checkbox label="Disponíveis" value="available" v-model="statusFilter" />
-        <Checkbox label="Indisponíveis" value="unavailable" v-model="statusFilter" />
+        <Checkbox label="Todos" value="all" v-model="status" />
+        <Checkbox label="Disponíveis" value="available" v-model="status" />
+        <Checkbox label="Indisponíveis" value="unavailable" v-model="status" />
       </div>
       <div class="filter-group">
         <Title title="Preço" size=".8rem">
           <template v-slot:extra>
-            <a class="clear-button" @click="priceFilter = ''">Limpar</a>
+            <a class="clear-button" @click="price = ''">Limpar</a>
           </template>
         </Title>
-        <Checkbox label="Até R$ 10" value="bellow_10" v-model="priceFilter" />
-        <Checkbox label="R$ 10 à R$ 30" value="between_10_30" v-model="priceFilter" />
-        <Checkbox label="R$ 30 à R$ 50" value="between_30_50" v-model="priceFilter" />
+        <Checkbox label="Até R$ 10" value="bellow_10" v-model="price" />
+        <Checkbox label="R$ 10 à R$ 30" value="between_10_30" v-model="price" />
+        <Checkbox label="R$ 30 à R$ 50" value="between_30_50" v-model="price" />
       </div>
       <div class="filter-group">
         <Title title="Categoria" size=".8rem">
           <template v-slot:extra>
-            <a class="clear-button" @click="categoryFilter = ''">Limpar</a>
+            <a class="clear-button" @click="category = ''">Limpar</a>
           </template>
         </Title>
-        <Checkbox label="Romance" value="romance" v-model="categoryFilter" />
-        <Checkbox label="Internacionais" value="international" v-model="categoryFilter" />
-        <Checkbox label="Suspense" value="suspense" v-model="categoryFilter" />
-        <Checkbox label="Mistério" value="mistery" v-model="categoryFilter" />
+        <Checkbox label="Romance" value="romance" v-model="category" />
+        <Checkbox label="Internacionais" value="international" v-model="category" />
+        <Checkbox label="Suspense" value="suspense" v-model="category" />
+        <Checkbox label="Mistério" value="mistery" v-model="category" />
       </div>
     </div>
   </div>
@@ -45,9 +45,9 @@ export default {
   },
   data(){
     return {
-      statusFilter: 'all',
-      priceFilter: '',
-      categoryFilter: ''
+      status: 'all',
+      price: '',
+      category: ''
     }
   }
 }
