@@ -1,13 +1,37 @@
 <template>
-  <div class="book-card">
-    <img src="https://images-na.ssl-images-amazon.com/images/I/71lFUYuLmuL.jpg" >
-    <div class="book-info">
-      <h3 class="title">A revolução dos bichos</h3>
-      <p class="author">George Orwell</p>
+  <router-link :to="{ name: 'Book', params: { id: book.id } }">
+    <div class="book-card">
+      <img :src="book.mainImg.src" >
+      <div class="book-info">
+        <h3 class="title">{{ book.title }}</h3>
+        <p class="author">{{ book.author }}</p>
+      </div>
+      <p class="price">{{ priceFormated }}</p>
     </div>
-    <p class="price">R$ 0,99</p>
-  </div>
+  </router-link>
 </template>
+
+<script>
+export default {
+  name: 'Book',
+  props: {
+    book: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  computed: {
+    priceFormated(){
+      const formated = this.book.price.toLocaleString('pt-BR', { 
+        style: "currency",
+        currency: 'BRL'
+      })
+      
+      return formated;
+    }
+  }
+}
+</script>
 
 <style scoped>
 .book-card {
@@ -46,5 +70,9 @@ img {
   align-self: flex-end;
   font-size: 1rem;
   color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
 }
 </style>
