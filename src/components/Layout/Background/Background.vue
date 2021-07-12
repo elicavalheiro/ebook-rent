@@ -18,5 +18,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import url("./Background.scss");
+.background-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -99;
+
+  .background-image {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .background-image {
+    display: none;
+  }
+}
 </style>
