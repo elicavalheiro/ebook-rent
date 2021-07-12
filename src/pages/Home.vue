@@ -2,19 +2,29 @@
   <background></background>
 </template>
 
-<script lang="ts">
+<script>
 import { useStore } from "vuex";
 import { computed, defineComponent } from "vue";
-import Background from "../components/layout/Background.vue";
+import Background from "../components/Layout/Background/Background.vue";
 
 export default defineComponent({
   components: { Background },
   setup() {
-    const store = useStore();
+    const {
+      state: { User: userState },
+      dispatch,
+    } = useStore();
+
+    const users = computed(() => userState.users);
+    const getUsers = () => dispatch("User/getUsers");
 
     return {
-      user: computed(() => store.state.User.user),
-    }
+      users,
+      getUsers,
+    };
+  },
+  created() {
+    this.getUsers();
   },
 });
 </script>
