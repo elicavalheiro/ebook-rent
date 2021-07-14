@@ -1,25 +1,37 @@
 <template>
   <background></background>
-  <form>
-    <form-input label="Email" v-model="email" placeholder="Email"></form-input>
-  </form>
+  <auth-layout>
+    <div class="left-column">
+      <logo direction="vertical"></logo>
+      <hero-box></hero-box>
+    </div>
+    <login-form></login-form>
+  </auth-layout>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
 import Background from "../../components/Layout/Background/Background.vue";
-import FormInput from "../../components/Form/FormInput/FormInput.vue";
+import Logo from "../../components/Common/Logo/Logo.vue";
+import AuthLayout from "../../components/Layout/AuthLayout/AuthLayout.vue";
+import LoginForm from "../../components/Form/LoginForm/LoginForm.vue";
+import HeroBox from "../../components/Layout/HeroBox/HeroBox.vue";
 
 export default defineComponent({
   components: {
     Background,
-    FormInput,
-  },
-  setup() {
-    const email = ref("");
-    return {
-      email,
-    };
+    Logo,
+    AuthLayout,
+    LoginForm,
+    HeroBox,
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.left-column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+</style>

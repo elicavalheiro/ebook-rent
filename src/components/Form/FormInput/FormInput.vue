@@ -1,7 +1,13 @@
 <template>
-  <label class="label">{{ label }}</label>
-  <input v-model="input" type="text" :placeholder="placeholder" class="input" />
-  {{ input }}
+  <div class="form-wrapper">
+    <label class="label">{{ label }}</label>
+    <input
+      v-bind="$attrs"
+      v-model="input"
+      :placeholder="placeholder"
+      class="input"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,9 +30,8 @@ export default defineComponent({
     },
   },
   setup({ label, modelValue, placeholder }, { emit }) {
-    const { input } = useInputValidator(
-      modelValue,
-      (value: string | number) => emit("update:modelValue", value)
+    const { input } = useInputValidator(modelValue, (value: string | number) =>
+      emit("update:modelValue", value)
     );
 
     return {
