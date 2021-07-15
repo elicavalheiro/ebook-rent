@@ -1,19 +1,16 @@
 <template>
   <div class="form-wrapper">
     <div class="input-wrapper">
-      <label class="label">{{ label }}</label>
+      <div class="label" v-if="!search">{{ label }}</div>
       <input
         v-bind="$attrs"
         v-model="input"
         :placeholder="placeholder"
         class="input"
+        :class="classConfig[inputStyle]"
       />
     </div>
-    <button
-      v-if="search"
-      class="search-button"
-      @click.prevent="handleSearch"
-    >
+    <button v-if="search" class="search-button" type="submit">
       <font-awesome-icon icon="search" class="search-icon" />
     </button>
   </div>
@@ -41,20 +38,31 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    inputStyle: {
+      type: String,
+      default: "primary"
+    }
   },
-  setup({ label, modelValue, placeholder, search }, { emit }) {
+  setup({ label, modelValue, placeholder, search, inputStyle }, { emit }) {
     const { input } = useInputValidator(modelValue, (value: string | number) =>
       emit("update:modelValue", value)
     );
+    
+    const classConfig: { [index: string]: string } = {
+      primary: "",
+      outlined: "input__outlined",
+    };
 
-    const handleSearch = () => console.log('search');
+    const handleSearch = () => console.log("search");
 
     return {
       label,
       search,
       input,
       placeholder,
-      handleSearch
+      handleSearch,
+      classConfig,
+      inputStyle
     };
   },
 });
@@ -74,10 +82,10 @@ export default defineComponent({
 .label {
   font-size: 0.875rem;
   font-weight: bold;
+  padding-bottom: 5px;
 }
 
 .input {
-  margin-top: 5px;
   padding: 0 10px;
   height: 2.5rem;
   width: 100%;
@@ -88,6 +96,11 @@ export default defineComponent({
   &::placeholder {
     color: #bfbfbf;
   }
+
+  &__outlined {
+    background: none;
+    color: white;
+  }
 }
 
 .search-button {
@@ -96,7 +109,7 @@ export default defineComponent({
   border: none;
   padding: 3px 10px;
   height: 2.5rem;
-  margin-top: 22px;
   color: white;
+  cursor: pointer;
 }
 </style>

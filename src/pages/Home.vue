@@ -1,14 +1,14 @@
 <template>
-  <h1>Home</h1>
+  <page-header></page-header>
 </template>
 
 <script>
 import { useStore } from "vuex";
 import { computed, defineComponent } from "vue";
-import Background from "../components/Layout/Background/Background.vue";
+import PageHeader from "../components/Common/PageHeader/PageHeader.vue";
 
 export default defineComponent({
-  components: { Background },
+  components: { PageHeader },
   setup() {
     const {
       state: { User: userState },
