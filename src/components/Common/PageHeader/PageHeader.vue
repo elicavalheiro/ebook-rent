@@ -4,6 +4,7 @@
     <div class="actions-wrapper">
       <form @submit.prevent="handleSearch">
         <form-input
+          v-model="searchInput"
           placeholder="Buscar livro ou autor(a)"
           search
           inputStyle="outlined"
@@ -15,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import FormInput from "../../Form/FormInput/FormInput.vue";
 import Avatar from "../Avatar/Avatar.vue";
 import Logo from "../Logo/Logo.vue";
@@ -27,11 +28,14 @@ export default defineComponent({
     FormInput,
   },
   setup() {
-    const handleSearch = () => console.log("buscar");
+    const searchInput = ref("");
+    // TODO: lembrar de limpar input após o submit
+    const handleSearch = () => console.log("buscar", searchInput.value);
 
     return {
       handleSearch,
-    }
+      searchInput,
+    };
   },
 });
 </script>
