@@ -1,7 +1,7 @@
 <template>
   <div class="divider">
     <div class="left"></div>
-    <p>or</p>
+    <p>{{ text }}</p>
     <div class="right"></div>
   </div>
 </template>

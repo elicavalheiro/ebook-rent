@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleLogin" class="login-form-container">
-    <h1>Sign In</h1>
+    <h1>Login</h1>
     <form-input
       label="Email"
       v-model="email"
