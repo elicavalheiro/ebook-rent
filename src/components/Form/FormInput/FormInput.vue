@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import useInputValidator from "../../../features/useInputValidator";
+import useInputValidator from "../../../hooks/useInputValidator";
 
 export default defineComponent({
   props: {

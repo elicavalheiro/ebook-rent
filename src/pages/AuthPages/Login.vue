@@ -10,14 +10,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
 import Background from "../../components/Layout/Background/Background.vue";
 import Logo from "../../components/Common/Logo/Logo.vue";
 import AuthLayout from "../../components/Layout/AuthLayout/AuthLayout.vue";
 import LoginForm from "../../components/Form/LoginForm/LoginForm.vue";
 import HeroBox from "../../components/Layout/HeroBox/HeroBox.vue";
 
-export default defineComponent({
+export default {
   components: {
     Background,
     Logo,
@@ -25,7 +24,7 @@ export default defineComponent({
     LoginForm,
     HeroBox,
   },
-});
+}
 </script>
 
 <style lang="scss" scoped>

@@ -4,7 +4,6 @@
       src="../../../assets/images/bg.png"
       alt="Background"
       class="background-image"
-      style="width: 100%; height: 100vh"
     />
   </div>
 </template>
@@ -28,6 +27,7 @@ export default defineComponent({
   z-index: -99;
 
   .background-image {
+    height: 100vh;
     width: 100%;
   }
 }
