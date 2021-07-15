@@ -13,7 +13,7 @@
       placeholder="*******"
     ></form-input>
     <div class="action-button">
-      <a href="#">Esqueceu a senha? Clique aqui!</a>
+      <router-link to="">Esqueceu a senha? Clique aqui!</router-link>
       <common-button type="submit">Acessar</common-button>
     </div>
     <divider></divider>

@@ -5,13 +5,17 @@ import Login from "../pages/AuthPages/Login.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    redirect: "/login",
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/home",
+    name: "Home",
+    component: Home,
   },
 ];
 

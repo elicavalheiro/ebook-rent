@@ -1,12 +1,21 @@
 <template>
   <div class="form-wrapper">
-    <label class="label">{{ label }}</label>
-    <input
-      v-bind="$attrs"
-      v-model="input"
-      :placeholder="placeholder"
-      class="input"
-    />
+    <div class="input-wrapper">
+      <label class="label">{{ label }}</label>
+      <input
+        v-bind="$attrs"
+        v-model="input"
+        :placeholder="placeholder"
+        class="input"
+      />
+    </div>
+    <button
+      v-if="search"
+      class="search-button"
+      @click.prevent="handleSearch"
+    >
+      <font-awesome-icon icon="search" class="search-icon" />
+    </button>
   </div>
 </template>
 
@@ -16,6 +25,10 @@ import useInputValidator from "../../../hooks/useInputValidator";
 
 export default defineComponent({
   props: {
+    search: {
+      type: Boolean,
+      default: false,
+    },
     label: {
       type: String,
       default: "",
@@ -29,21 +42,35 @@ export default defineComponent({
       default: "",
     },
   },
-  setup({ label, modelValue, placeholder }, { emit }) {
+  setup({ label, modelValue, placeholder, search }, { emit }) {
     const { input } = useInputValidator(modelValue, (value: string | number) =>
       emit("update:modelValue", value)
     );
 
+    const handleSearch = () => console.log('search');
+
     return {
       label,
+      search,
       input,
       placeholder,
+      handleSearch
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
+.form-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & .input-wrapper {
+    width: 100%;
+  }
+}
+
 .label {
   font-size: 0.875rem;
   font-weight: bold;
@@ -61,5 +88,15 @@ export default defineComponent({
   &::placeholder {
     color: #bfbfbf;
   }
+}
+
+.search-button {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 3px 10px;
+  height: 2.5rem;
+  margin-top: 22px;
+  color: white;
 }
 </style>
